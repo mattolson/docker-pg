@@ -1,7 +1,7 @@
-FROM mattolson/base
+FROM mattolson/base:14.04
 
 ENV PG_MAJOR 9.4
-ENV PG_VERSION 9.4.6-1.pgdg14.04+1
+ENV PG_VERSION 9.4.19-1.pgdg14.04+1
 
 # Create the user first so it has the same uid/gid as any other user created in a similar fashion
 RUN groupadd -r postgres && useradd -r -g postgres postgres
