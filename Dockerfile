@@ -1,8 +1,9 @@
-FROM mattolson/base:22.04
+FROM mattolson/base
 
-ENV PG_MAJOR 16
-ENV PG_VERSION 16.0-1.pgdg22.04+1
-ENV PG_CONTRIB_VERSION 16+255.pgdg22.04+1
+# Get these from `apt-cache policy` after installing pgdg as stated below
+ENV PG_MAJOR=17
+ENV PG_VERSION=17.5-1.pgdg24.04+1
+ENV PG_CONTRIB_VERSION=16+257build1.1
 
 # Create the user first so it has the same uid/gid as any other user created in a similar fashion
 RUN groupadd -r postgres && useradd -r -g postgres postgres
@@ -20,8 +21,8 @@ RUN apt-get update &&\
 RUN mkdir -p /var/run/postgresql &&\
     chown -R postgres /var/run/postgresql
 
-ENV PATH /usr/lib/postgresql/$PG_MAJOR/bin:$PATH
-ENV PGDATA /var/lib/postgresql/data
+ENV PATH=/usr/lib/postgresql/$PG_MAJOR/bin:$PATH
+ENV PGDATA=/var/lib/postgresql/data
 
 VOLUME /var/lib/postgresql/data
 
